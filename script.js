@@ -1,62 +1,43 @@
-(() => {
-  const status = document.getElementById('officeStatus');
-  const panel = document.getElementById('settingsPanel');
-  const settingsButton = document.getElementById('settingsButton');
-  const welcomeOverlay = document.getElementById('welcomeOverlay');
-  let mode = localStorage.getItem('mahakal-office-mode') || 'auto';
+const data=[
+['ઈ - નિર્માણ કાર્ડ','scheme',['આધાર કાર્ડ','રેશન કાર્ડ','બેંક પાસબુક','પાસપોર્ટ સાઇઝ ફોટો','90 દિવસ કામ કર્યાનું પ્રમાણપત્ર']],
+['ABC કાર્ડ','scheme',['આધાર કાર્ડ (મોબાઈલ નંબર લિંક હોવો જરૂરી)','કોલેજ/યુનિવર્સિટીનું આઈડી કાર્ડ અથવા એનરોલમેન્ટ નંબર']],
+['પાનકાર્ડ (નવું / સુધારો)','scheme',['આધાર કાર્ડ','2 પાસપોર્ટ સાઇઝ ફોટા','જૂના પાનકાર્ડની નકલ (સુધારા માટે)','ચુંટણીકાર્ડ અથવા જન્મનો દાખલો'],'ઇન્સ્ટન્ટ e-PAN કાર્ડ બનતા 24 કલાકનો સમય લાગી શકે છે. ઉપયોગની માન્યતા સંબંધિત સંસ્થા પાસે તપાસો.'],
+['ઈ-શ્રમ કાર્ડ (નવું/સુધારો)','scheme',['આધાર કાર્ડ (મોબાઈલ નંબર લિંક હોવો જરૂરી)','બેંક પાસબુક']],
+['ચુંટણી કાર્ડ (નવું/સુધારો)','scheme',['આધાર કાર્ડ','પાસપોર્ટ સાઇઝ ફોટો','જન્મનો પુરાવો (LC)','રહેઠાણનો પુરાવો','જૂનું ચુંટણી કાર્ડ']],
+['આધારકાર્ડ પ્રિન્ટ/અપડેટ','scheme',['આધારકાર્ડ નંબર','લિંક થયેલ મોબાઇલ નંબર']],
+['આયુષ્યમાન કાર્ડ','scheme',['રેશન કાર્ડ','આધાર કાર્ડ','લિંક મોબાઈલ નંબર']],['રેશન કાર્ડ e-KYC','scheme',['આધારકાર્ડ (લિંક મોબાઈલ સાથે)','રેશન કાર્ડ']],['ABHA કાર્ડ','scheme',['આધાર કાર્ડ (મોબાઈલ નંબર લિંક હોવો જરૂરી)']],
+['ડ્રાઇવિંગ લાઇસેન્સ','scheme',['આધાર કાર્ડ','પાસપોર્ટ સાઇઝ ફોટો','LC અથવા જન્મનો દાખલો']],['પાસપોર્ટ','scheme',['આધાર કાર્ડ','પાન કાર્ડ અથવા ચુંટણી કાર્ડ','માર્કશીટ અથવા LC','બેંક પાસબુક']],['PF ને લગતું કામ','scheme',['UAN નંબર','આધાર કાર્ડ','પાન કાર્ડ','બેંકની પાસબુક']],['7/12 અને 8-અ ની નકલ','scheme',['ગામ, તાલુકો, જિલ્લો અને ખાતા નંબર અથવા સર્વે નંબર']],['પ્રોપર્ટી કાર્ડ','scheme',['સિટી સર્વે નંબર અને વોર્ડ નંબર']],
+['RTE ઍડ્મિશન ફોર્મ','scheme',['બાળકના જન્મનો દાખલો','માતા-પિતાના આધાર કાર્ડ','આવકનો દાખલો','જાતિનો દાખલો (જો લાગુ પડે)','લાઈટ બિલ અથવા ભાડા કરાર','બાળકના ફોટા']],['પી. એમ. કિસાન યોજના','scheme',['આધાર કાર્ડ','7/12 અને 8-અ ના ઉતારા','બેંક પાસબુક (લિંક મોબાઈલ)','મરણનો દાખલો (જો લાગુ પડે)']],['ખેડૂત નોંધણી','scheme',['આધાર કાર્ડ (લિંક મોબાઈલ નંબર સાથે)','7/12 અને 8-અ ના ઉતારા','બેંક પાસબુક']],
+['પંડિત દિન દયાળ આવાસ યોજના','scheme',['આધાર કાર્ડ, રેશન કાર્ડ, ચુંટણી કાર્ડ','આવકનો દાખલો','પ્લોટ / જમીનનો દસ્તાવેજ','બેંક પાસબુક','બાંધકામ રજા ચિઠ્ઠી','પાસપોર્ટ સાઇઝ ફોટો','તલાટીની સહી-સિક્કાવાળું ફોર્મ']],['કુંવરબાઈનું મામેરું યોજના','scheme',['દીકરી અને પિતાનું / પતિનું આધાર કાર્ડ','આવક અને જાતિનો દાખલો','મેરેજ સર્ટિફિકેટ અને બેંક પાસબુક','પાસપોર્ટ સાઇઝ ફોટો']],['માનવ ગરિમા યોજના','scheme',['આધાર કાર્ડ અને રેશન કાર્ડ','આવકનો દાખલો અને જાતિનો દાખલો','બેંક પાસબુક અને પાસપોર્ટ ફોટો','વ્યવસાયલક્ષી તાલીમનું પ્રમાણપત્ર','શાળા છોડ્યાનું પ્રમાણપત્ર (LC)']],['પી. એમ. વિશ્વકર્મા યોજના','scheme',['આધાર કાર્ડ (મોબાઈલ નંબર લિંક)','રેશન કાર્ડ અને બેંક પાસબુક','પાસપોર્ટ સાઇઝ ફોટો','વ્યવસાયનો પુરાવો','જાતિનું પ્રમાણપત્ર']],['આઇ-ખેડૂત પોર્ટલની યોજનાઓ','scheme',['આધાર કાર્ડ (લિંક મોબાઈલ)','રેશન કાર્ડ','7/12 અને 8-અ ના ઉતારા','બેંક પાસબુક']],['શિષ્યવૃત્તિના ફોર્મ','scheme',['આધાર કાર્ડ અને છેલ્લી માર્કશીટ','આવકનો દાખલો અને જાતિનો દાખલો','બેંક પાસબુક અને ફીની પહોંચ','LC અથવા BONAFIDE પ્રમાણપત્ર','પાસપોર્ટ સાઇઝ ફોટો']],['વૃદ્ધ પેન્શન યોજના','scheme',['આધાર કાર્ડ અને રેશન કાર્ડ','ઉંમરનો પુરાવો (60 વર્ષથી વધુ)','આવકનો દાખલો અને બેંક પાસબુક','જન્મનું પ્રમાણપત્ર અથવા LC']],
+['આવકનો દાખલો મેળવવા','docs',['ફોર્મ અને ફોટો','રેશન કાર્ડની નકલ','સ્કૂલ લિવિંગ','તલાટીની આવકનો દાખલો','છેલ્લું લાઈટબિલ']],['જાતિનો દાખલો મેળવવા','docs',['ફોર્મ અને ફોટો','રેશન કાર્ડની નકલ','સ્કૂલ લિવિંગ','પિતા/માતા/બહેનનું સ્કૂલ લિવિંગ સર્ટી','છેલ્લું લાઈટબિલ','તલાટીની આવકનો દાખલો']],['ડોમીસાઈલ સર્ટી મેળવવા','docs',['ફોર્મ અને ફોટો','રેશન કાર્ડની નકલ','સ્કૂલ લિવિંગ','તલાટીનો 10 વર્ષનો રહેઠાણનો દાખલો','રહેઠાણ અંગેનું સોગંદનામું','છેલ્લું લાઈટબિલ','જન્મનો દાખલો','પોલીસ સ્ટેશનનો દાખલો']],['નોન ક્રીમીલેયર સર્ટી મેળવવા','docs',['ફોર્મ અને ફોટો','રેશન કાર્ડની નકલ','જાતિનો દાખલો','સ્કૂલ લિવિંગ','વાલીનું આવકનું સોગંદનામું','છેલ્લું લાઈટબિલ','આવકનો દાખલો']],['સિનિયર સીટીઝન સર્ટી','docs',['ફોર્મ અને ફોટો','રેશન કાર્ડની નકલ','સ્કૂલ લિવિંગ','જન્મનો દાખલો','ચુંટણી કાર્ડની નકલ','છેલ્લું લાઈટબિલ']],['અલગ રેશનકાર્ડ કરાવવા','docs',['ફોર્મ અને ફોટો','રેશન કાર્ડની નકલ','જૂનું રેશન કાર્ડ','આધાર કાર્ડ','આવકનો દાખલો','બેંક પાસબુકની નકલ','તલાટીનો દાખલો','પિતાનું સંમતિ સોગંદનામું / લાઈટબિલ']],['નવા રેશનકાર્ડ માટે','docs',['ફોર્મ અને ફોટો','રેશન કાર્ડની નકલ','નામ કમીનો દાખલો','આધાર કાર્ડ','આવકનો દાખલો','બેંક પાસબુકની નકલ','તલાટીનો દાખલો','લાઈટબિલ']],['રેશન કાર્ડમાં નામ દાખલ કરવા','docs',['ફોર્મ અને ફોટો','ચુંટણી કાર્ડની નકલ','રેશન કાર્ડની નકલ','આધાર કાર્ડ','જન્મનો દાખલો']],['વિધવા સહાય મેળવવા','scheme',['ફોર્મ અને ફોટો','રેશન કાર્ડની નકલ','સ્કૂલ લિવિંગ','પતિના મૃત્યુનો દાખલો','ચુંટણી કાર્ડની નકલ','છેલ્લું લાઈટબિલ','સંતાનોના જન્મ તારીખનો દાખલો']],['ઉજ્જવલા યોજના (ગેસ કનેક્શન)','scheme',['મહિલા લાભાર્થીનું આધાર કાર્ડ','કુટુંબના સભ્યોના આધારકાર્ડ','રેશન કાર્ડની નકલ','મહિલા લાભાર્થીની બેંક પાસબુકની નકલ','લાઈટ બિલ','મહિલા લાભાર્થીના 2 ફોટા']],
+['મેરેજ સર્ટિફિકેટ','docs',['બંનેના આધારકાર્ડ / ચૂંટણીકાર્ડ','બંનેના લાઈટબિલ / આધારકાર્ડ','બંનેના પાસપોર્ટ ફોટા','લગ્નનો ફોટો (4x6)','લગ્ન કંકોત્રી','બંનેના સ્કૂલ લિવિંગ સર્ટી','2 સાક્ષીના આધારકાર્ડ']],['ભાડા કરાર','docs',['બંનેના ફોટા અને આધારકાર્ડ','વેરાબિલ','ડિપોઝીટ અને ભાડાની વિગત']],['E.W.S. પ્રમાણપત્ર','docs',['પાસપોર્ટ સાઇઝ ફોટો','અરજદારનું શાળા છોડ્યાનું પ્રમાણપત્ર','રેશનકાર્ડની નકલ','આધારકાર્ડ','વેરાબિલ / લાઈટબિલ / ભાડાકરાર','આવકનો દાખલો']],['એફીડેવીટ (સોગંદનામું)','docs',['પાસપોર્ટ ફોટો - 1','આધારકાર્ડ']],['Fastag','service',['પાનકાર્ડ','RC બુક','લાઈસન્સ']],['RTO ના કામ','service',['ગાડી નામે કરવી','નંબર પ્લેટ લેવી','RTO ને લગતા તમામ કામો']],['ટુ-વ્હીલ / ફોર-વ્હીલ લાઈસન્સ','service',['આધારકાર્ડ અને સ્કૂલ LC','પાનકાર્ડ અને 2 ફોટા','ચુંટણીકાર્ડ','લાઈટબિલ (ભાડે હોય તો ભાડાકરાર)']],['ગુમાસ્તાધારા પ્રમાણપત્ર / વ્યવસાય વેરો','docs',['વેરાબિલ તથા વેરો ભર્યાની રસીદ','ખરીદ-વેચાણના બિલ','આઈ.ડી. પ્રૂફ','ભાડે હોય તો ભાડા કરાર','ભાગીદારી હોય તો ભાગીદારી દસ્તાવેજ']],['ગેઝેટ્સ (નામ બદલવા માટે)','docs',['આધારકાર્ડ','પાનકાર્ડ','ચુંટણીકાર્ડ','રેશનકાર્ડ','પાસપોર્ટ','લાઈસન્સ','સ્કૂલ LC','2 ફોટા','લાઈટબિલ / વેરાબિલ / ભાડાકરાર']],['રેશનકાર્ડમાં નામ ચડાવવા','docs',['રેશનકાર્ડની ઝેરોક્ષ','આધારકાર્ડ / ચુંટણીકાર્ડ','બાળક માટે જન્મનો દાખલો / સ્કૂલ લિવિંગ સર્ટી','જરૂર મુજબ નામ કમીનો દાખલો']],['સીનીયર સીટીઝન સર્ટી','docs',['ફોર્મ અને ફોટો','ચુંટણીકાર્ડની નકલ','સ્કૂલ લિવિંગ સર્ટી / જન્મનો દાખલો','આધારકાર્ડ (જન્મ તારીખ સાથે)','રેશનકાર્ડની નકલ','છેલ્લું લાઈટબિલ']]
+];
+const services=['ડોક્યુમેન્ટ સ્કૅનિંગ','ઝેરોક્ષ / કલર ઝેરોક્ષ','પ્રિન્ટ / મોબાઈલમાંથી પ્રિન્ટ','લેમિનેશન','સ્પર્ધાત્મક પરીક્ષાના ફોર્મ','દરેક પ્રકારની ભરતીઓના ફોર્મ','PVC કાર્ડ પ્રિન્ટ','કૉલ લેટર / હૉલ ટિકિટ','પૈસા ઉપાડવા / ATM','રિચાર્જ / લાઇટ બિલ ભરવા','મેરેજ સર્ટિફિકેટ (ઇંગ્લિશમાં ટાઈપિંગ)','રિઝ્યુમ / BIO ડેટા','બેનર / પોસ્ટર બનાવવા'];
+const cards=document.getElementById('cards'),search=document.getElementById('search'),empty=document.getElementById('empty');let filter='all';
+function render(){let q=search.value.trim().toLocaleLowerCase('gu');let list=data.filter(d=>(filter==='all'||d[1]===filter)&&(!q||(d[0]+' '+d[2].join(' ')+' '+(d[3]||'')).toLocaleLowerCase('gu').includes(q)));cards.innerHTML=list.map((d,i)=>`<article class="card"><span class="kind">${d[1]==='scheme'?'સરકારી યોજના':d[1]==='docs'?'પુરાવાઓની યાદી':'અન્ય સુવિધા'}</span><h3>${d[0]}</h3><button type="button" onclick="speakText('${d[0].replace(/'/g,"\\'")}')">🔊 સાંભળો</button><h4>${d[1]==='service'?'સેવાઓ:':'જરૂરી ડોક્યુમેન્ટ્સ:'}</h4><ul>${d[2].map(x=>`<li>${x}</li>`).join('')}</ul>${d[3]?`<p class="note">નોંધ: ${d[3]}</p>`:''}</article>`).join('');empty.hidden=list.length>0;}
+function speakText(text){if('speechSynthesis'in window){speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(text));}else alert(text)}window.speakText=speakText;search.addEventListener('input',render);document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));render()}));
+document.querySelectorAll('[data-theme]').forEach(b=>b.addEventListener('click',()=>{const colors={blue:['#1769d2','#09a6dc'],red:['#c62828','#ef5350'],green:['#16834a','#50b879'],purple:['#6a35b8','#a16de0'],orange:['#d66b12','#f5a623'],sky:['#087fba','#39c5d8'],pink:['#c02677','#f472b6'],gray:['#374151','#6b7280']};document.documentElement.style.setProperty('--primary',colors[b.dataset.theme][0]);document.documentElement.style.setProperty('--primary2',colors[b.dataset.theme][1]);}));document.getElementById('darkToggle').addEventListener('click',()=>document.body.classList.toggle('dark'));document.getElementById('shareBtn').addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:document.title,url:location.href});else{await navigator.clipboard.writeText(location.href);alert('વેબસાઇટની લિંક કોપી થઈ ગઈ છે.')}}catch(e){}});document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('customerName').value,m=document.getElementById('message').value;window.open('https://wa.me/919909614382?text='+encodeURIComponent('નામ: '+n+'\nમેસેજ: '+m),'_blank')});document.getElementById('serviceGrid').innerHTML=services.map(s=>`<div class="service">✨ ${s}</div>`).join('');render();
 
-  function isOfficeHours() {
-    const now = new Date();
-    const day = now.getDay(); // 0 = Sunday
-    const minutes = now.getHours() * 60 + now.getMinutes();
-    return day !== 0 && minutes >= 9 * 60 && minutes < 19 * 60;
+
+/* Welcome popup confetti */
+(function(){
+  const overlay = document.getElementById('welcomeOverlay');
+  const confettiBox = document.getElementById('welcomeConfetti');
+  const okButton = document.getElementById('welcomeOk');
+  if (!overlay || !confettiBox || !okButton) return;
+  const colors = ['#2D6BFF','#0CA789','#F5A623','#8B5CF6','#E84A5F'];
+  for (let i = 0; i < 90; i++) {
+    const piece = document.createElement('i');
+    piece.style.setProperty('--x', (Math.random() * 100) + '%');
+    piece.style.setProperty('--c', colors[i % colors.length]);
+    piece.style.setProperty('--d', (3.5 + Math.random() * 5) + 's');
+    piece.style.setProperty('--delay', (-Math.random() * 8) + 's');
+    piece.style.setProperty('--r', (Math.random() * 360) + 'deg');
+    confettiBox.appendChild(piece);
   }
-
-  function renderStatus() {
-    const open = mode === 'open' ? true : mode === 'closed' ? false : isOfficeHours();
-    status.textContent = open ? '🟢 અત્યારે Office ચાલુ છે' : '🚪 અત્યારે Office બંધ છે';
-    status.classList.toggle('open', open);
-    status.classList.toggle('closed', !open);
-  }
-
-  document.querySelectorAll('[data-mode]').forEach(button => {
-    button.addEventListener('click', () => {
-      mode = button.dataset.mode;
-      localStorage.setItem('mahakal-office-mode', mode);
-      renderStatus();
-    });
+  function closeWelcome(){ overlay.hidden = true; }
+  okButton.addEventListener('click', closeWelcome);
+  document.addEventListener('keydown', function(event){
+    if (event.key === 'Escape') closeWelcome();
   });
-
-  settingsButton.addEventListener('click', () => {
-    panel.hidden = !panel.hidden;
-  });
-  document.getElementById('closeSettings').addEventListener('click', () => {
-    panel.hidden = true;
-  });
-
-  const themes = {
-    blue: ['#173b72', '#28549b'],
-    purple: ['#30266f', '#68418a'],
-    green: ['#124d43', '#26785c']
-  };
-  document.querySelectorAll('[data-theme]').forEach(button => {
-    button.addEventListener('click', () => {
-      const theme = button.dataset.theme;
-      if (theme === 'reset') {
-        document.body.style.background = '';
-      } else {
-        const colors = themes[theme];
-        document.body.style.background = `radial-gradient(circle at 12% 20%,${colors[1]} 0,transparent 34%),radial-gradient(circle at 85% 70%,${colors[0]} 0,transparent 35%),linear-gradient(135deg,${colors[0]},${colors[1]})`;
-      }
-    });
-  });
-
-  document.getElementById('welcomeOk').addEventListener('click', () => {
-    welcomeOverlay.hidden = true;
-    sessionStorage.setItem('mahakal-welcome-seen', 'yes');
-  });
-  if (sessionStorage.getItem('mahakal-welcome-seen') === 'yes') welcomeOverlay.hidden = true;
-
-  renderStatus();
-  setInterval(renderStatus, 30000);
 })();
