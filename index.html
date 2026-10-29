@@ -17,4 +17,61 @@
 <section class="contact"><h2>ડોક્યુમેન્ટ્સ અને પૂછપરછ</h2><p>અહીં માહિતી ભરીને WhatsApp પર મેસેજ મોકલો.</p><form id="contactForm"><input id="customerName" placeholder="તમારું નામ લખો" required><textarea id="message" placeholder="ડોક્યુમેન્ટ / મેસેજ લખો" required></textarea><button class="primary" type="submit">WhatsApp પર મોકલો</button></form></section>
 <section class="payment"><h2>ઓનલાઈન પેમેન્ટ (Scan & Pay)</h2><p>UPI ID: <b>ranjit66958@okhdfcbank</b></p><p>સંચાલક:રણજીત પઢિયાર</p><p>મોબાઇલ: <a href="tel:9909614382">9909614382</a></p><p>સરનામું: મહાકાલ સીએસસી સેન્ટર, વડુ ડબકા રોડ , નરસિંહપૂરા  391440 </p><a class="primary linkbtn" href="https://wa.me/919909614382/" target="_blank" rel="noopener">WhatsApp ગ્રુપમાં જોડાઓ</a></section>
 </main><footer>આપનો દિવસ શુભ રહે! 🌻✨ હસતા રહો! 😊<br>© 2026 મહાકાલ સીએસસી સેન્ટર. All Rights Reserved.</footer>
-<script src="script.js"></script></body></html>
+<script src="script.js"></script></body></html> 
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>મહાકાલ CSC સેન્ટર</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="container">
+    <h1>મહાકાલ CSC સેન્ટર</h1>
+    <p>નરસિંહપુરા, તા. પાદરા, જી. વડોદરા</p>
+
+    <section class="status-card">
+      <h2>ઓફિસનું લાઈવ સ્ટેટસ</h2>
+
+      <div id="statusBadge" class="status-badge">
+        સ્ટેટસ લોડ થઈ રહ્યું છે...
+      </div>
+
+      <p id="statusMessage">કૃપા કરીને રાહ જુઓ.</p>
+      <p>ઓફિસ સમય: સવારે 9:00 થી સાંજે 7:00</p>
+      <p id="lastUpdated"></p>
+    </section>
+
+    <section class="admin-card">
+      <h2>એડમિન કંટ્રોલ</h2>
+      <p>ઓફિસનું સ્ટેટસ બદલવા માટે PIN દાખલ કરો.</p>
+
+      <input
+        type="password"
+        id="adminPin"
+        placeholder="એડમિન PIN"
+        inputmode="numeric"
+      >
+
+      <button id="openBtn" type="button">
+        ઓફિસ ચાલુ કરો
+      </button>
+
+      <button id="closeBtn" type="button">
+        ઓફિસ બંધ કરો
+      </button>
+
+      <p id="adminMessage" aria-live="polite"></p>
+    </section>
+
+    <footer>
+      <p>મહાકાલ CSC સેન્ટર | સંપર્ક: 9909614382</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
