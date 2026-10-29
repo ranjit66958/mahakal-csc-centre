@@ -1,0 +1,405 @@
+
+/* =====================================
+   MAHAKAL CSC CENTRE
+   Website Design and Responsive Layout
+   ===================================== */
+
+/* 1. Global Settings */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 25px;
+}
+
+:root {
+  --primary: #102a43;
+  --secondary: #145da0;
+  --accent: #f5a623;
+  --success: #18a957;
+  --background: #f5f8fc;
+  --white: #ffffff;
+  --text: #263445;
+  --muted: #627d98;
+  --border: #e3ebf3;
+}
+
+body {
+  font-family: Arial, "Noto Sans Gujarati", sans-serif;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--background);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  transition: 0.25s ease;
+}
+
+/* 2. Header */
+header {
+  background: var(--primary);
+  color: var(--white);
+  padding: 16px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  box-shadow: 0 4px 15px #00000018;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand h2 {
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+.brand small {
+  display: block;
+  color: #d5e2ee;
+  font-size: 12px;
+}
+
+/* 3. Logo */
+.logo {
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5a623, #ffe7a8);
+  color: var(--primary);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 900;
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+/* 4. Navigation Menu */
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* 5. Hero / Home Section */
+.hero {
+  min-height: 420px;
+  padding: 75px 6%;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      #f5a62355,
+      transparent 27%
+    ),
+    linear-gradient(125deg, #145da0, #102a43);
+  color: var(--white);
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 5vw, 50px);
+  line-height: 1.25;
+  margin-bottom: 18px;
+  font-weight: 800;
+}
+
+.hero p {
+  max-width: 750px;
+  margin: 0 auto 18px;
+  font-size: 18px;
+  color: #e6f0fa;
+}
+
+.hero p:last-of-type {
+  margin-bottom: 25px;
+}
+
+/* 6. Buttons */
+.button {
+  display: inline-block;
+  padding: 12px 23px;
+  margin: 5px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px #00000020;
+}
+
+.button-light {
+  background: var(--white);
+  color: var(--primary);
+}
+
+.button-green {
+  background: var(--success);
+  color: var(--white);
+}
+
+/* 7. Common Sections */
+section {
+  padding: 60px 6%;
+}
+
+.section-title {
+  text-align: center;
+  color: var(--primary);
+  font-size: clamp(25px, 3vw, 34px);
+  line-height: 1.4;
+  margin-bottom: 32px;
+}
+
+/* 8. Services Grid */
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.service {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  border-bottom: 4px solid var(--accent);
+  box-shadow: 0 5px 20px #102a4308;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.service:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px #102a4315;
+}
+
+.service h3 {
+  color: var(--secondary);
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.service p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* 9. About Section */
+#about {
+  background: var(--white);
+  text-align: center;
+}
+
+#about p {
+  max-width: 900px;
+  margin: 0 auto 15px;
+  font-size: 16px;
+}
+
+/* 10. Contact Section */
+.contact {
+  background: linear-gradient(135deg, #102a43, #145da0);
+  color: var(--white);
+  text-align: center;
+}
+
+.contact .section-title {
+  color: var(--white);
+}
+
+.contact p {
+  margin: 12px 0;
+  font-size: 16px;
+}
+
+.contact strong {
+  color: #ffcf70;
+}
+
+/* 11. Footer */
+footer {
+  background: #071827;
+  color: #d5e2ee;
+  text-align: center;
+  padding: 23px 15px;
+  font-size: 14px;
+}
+
+footer p {
+  margin: 4px 0;
+}
+
+/* 12. Focus and Accessibility */
+a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* 13. Tablet Responsive Layout */
+@media (max-width: 900px) {
+  header {
+    padding: 15px 4%;
+  }
+
+  nav {
+    gap: 12px;
+  }
+
+  .services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .hero {
+    padding: 60px 5%;
+  }
+}
+
+/* 14. Mobile Responsive Layout */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px 4%;
+  }
+
+  .brand {
+    justify-content: center;
+  }
+
+  .brand h2 {
+    font-size: 18px;
+  }
+
+  .logo {
+    width: 48px;
+    height: 48px;
+    font-size: 15px;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 8px 14px;
+  }
+
+  nav a {
+    font-size: 13px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 48px 18px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero .button {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 10px auto;
+  }
+
+  section {
+    padding: 42px 18px;
+  }
+
+  .section-title {
+    font-size: 27px;
+    margin-bottom: 24px;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .service {
+    padding: 22px;
+  }
+
+  .contact p {
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+
+  .contact .button {
+    display: block;
+    max-width: 320px;
+    margin: 10px auto;
+  }
+}
+
+/* 15. Very Small Screens */
+@media (max-width: 360px) {
+  .brand h2 {
+    font-size: 16px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  nav {
+    gap: 8px;
+  }
+
+  nav a {
+    font-size: 12px;
+  }
+
+  .service {
+    padding: 18px;
+  }
+}
+
+/* 16. Reduce Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
