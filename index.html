@@ -1,20 +1,98 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="gu">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="મહાકાલ સીએસસી સેન્ટર - સરકારી યોજનાઓ, ઓનલાઈન સેવાઓ અને જરૂરી ડોક્યુમેન્ટ્સની માહિતી">
-<title>મહાકાલ સીએસસી સેન્ટર |Mahakal CSC Center </title>
-<link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123c9c">
+  <title>મહાકાલ CSC સેન્ટર | ડિજિટલ સેવા</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="topbar"><button id="darkToggle">🌙 ડાર્ક મોડ ચાલુ કરો</button><div class="themes"><button data-theme="blue">🔵 બ્લુ</button><button data-theme="red">🔴 લાલ</button><button data-theme="green">🟢 લીલો</button><button data-theme="purple">🟣 જાંબલી</button><button data-theme="orange">🟠 કેસરી</button><button data-theme="sky">🦚 સ્કાય</button><button data-theme="pink">🩷 પિંક</button><button data-theme="gray">🖤 ગ્રે</button></div><button id="shareBtn">સાઈટ શેર કરો</button></div>
-<div class="ticker"><b>ન્યૂઝ:</b> 💻 તમામ સરકારી યોજનાઓની માહિતી માટે મુલાકાત લો.. ✨</div>
-<header class="hero"><div class="logo">🖥️</div><h1>મહાકાલ સીએસસી સેન્ટર</h1><h2>Mahakal CSC Center </h2><p>DEVELOPED BY |રણજીત પઢિયાર </p><div class="stats"><div><strong>30+</strong><span>ઓનલાઈન સેવાઓ</span></div><div><strong>1900+</strong><span>સંતુષ્ટ ગ્રાહકો</span></div><div><strong>24/7</strong><span>કલાક સપોર્ટ</span></div><div><strong>100%</strong><span>વિશ્વાસપાત્ર કામ</span></div></div></header>
-<main><section class="searcharea"><input id="search" placeholder="યોજના અથવા સેવાનું નામ શોધો..." aria-label="યોજના અથવા સેવા શોધો"><div class="filters"><button class="active" data-filter="all">બધા કામ</button><button data-filter="scheme">સરકારી યોજનાઓ</button><button data-filter="service">અન્ય સુવિધાઓ</button><button data-filter="docs">પુરાવાઓની યાદી</button></div></section>
-<section><h2 class="section-title">સરકારી યોજનાઓ અને જરૂરી ડોક્યુમેન્ટ્સ</h2><div id="cards" class="cards"></div><p id="empty" hidden>કોઈ માહિતી મળી નથી. બીજું નામ શોધો.</p></section>
-<section id="extras"><h2 class="section-title">અમારી અન્ય ઓનલાઈન સુવિધાઓ</h2><div class="service-grid" id="serviceGrid"></div></section>
-<section class="contact"><h2>ડોક્યુમેન્ટ્સ અને પૂછપરછ</h2><p>અહીં માહિતી ભરીને WhatsApp પર મેસેજ મોકલો.</p><form id="contactForm"><input id="customerName" placeholder="તમારું નામ લખો" required><textarea id="message" placeholder="ડોક્યુમેન્ટ / મેસેજ લખો" required></textarea><button class="primary" type="submit">WhatsApp પર મોકલો</button></form></section>
-<section class="payment"><h2>ઓનલાઈન પેમેન્ટ (Scan & Pay)</h2><p>UPI ID: <b>ranjit66958@okhdfcbank</b></p><p>સંચાલક:રણજીત પઢિયાર</p><p>મોબાઇલ: <a href="tel:9909614382">9909614382</a></p><p>સરનામું: મહાકાલ સીએસસી સેન્ટર, વડુ ડબકા રોડ , નરસિંહપૂરા  391440 </p><a class="primary linkbtn" href="https://wa.me/919909614382/" target="_blank" rel="noopener">WhatsApp ગ્રુપમાં જોડાઓ</a></section>
-</main><footer>આપનો દિવસ શુભ રહે! 🌻✨ હસતા રહો! 😊<br>© 2026 મહાકાલ સીએસસી સેન્ટર. All Rights Reserved.</footer>
-<script src="script.js"></script></body></html> 
+  <header class="site-header">
+    <img src="logo.png" alt="મહાકાલ CSC સેન્ટર લોગો" class="site-logo">
+    <div class="header-text">
+      <p class="eyebrow">સરકારી સેવા • ડિજિટલ સેવા • આપના માટે</p>
+      <h1>મહાકાલ CSC સેન્ટર</h1>
+      <p class="location">નરસિંહપુરા, તા. પાદરા, જી. વડોદરા</p>
+      <a class="phone-link" href="tel:9909614382">📞 9909614382</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="pill">તમારી નજીકની ડિજિટલ સેવા</span>
+        <h2>તમામ ઓનલાઈન સેવાઓ<br><span>એક જ સ્થળે</span></h2>
+        <p>સરકારી યોજનાઓ, ઓનલાઈન ફોર્મ અને ડિજિટલ સેવાઓ માટે મહાકાલ CSC સેન્ટરની મુલાકાત લો.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:9909614382">હમણાં ફોન કરો</a>
+          <a class="btn btn-secondary" href="#services">સેવાઓ જુઓ</a>
+        </div>
+      </div>
+      <div class="status-card">
+        <div class="status-heading">
+          <span class="status-dot" id="statusDot"></span>
+          <span class="muted">સેન્ટરની હાલની સ્થિતિ</span>
+        </div>
+        <div id="statusBadge" class="status-badge">સ્થિતિ તપાસી રહ્યા છીએ...</div>
+        <p id="statusMessage" class="status-message">કૃપા કરીને થોડી વાર રાહ જુઓ.</p>
+        <div class="hours">
+          <span>સેન્ટરનો સમય</span>
+          <strong>દરરોજ સવારે 9:00 થી સાંજે 7:00</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-title">
+        <p class="eyebrow">અમારી સેવાઓ</p>
+        <h2>તમારા કામની ડિજિટલ સેવાઓ</h2>
+        <p>તમને જરૂરી સેવા માટે ફોન કરીને માહિતી મેળવી શકો છો.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card"><span class="service-icon">🪪</span><h3>આધાર અને ઓળખપત્ર</h3><p>ઓળખપત્ર સંબંધિત ઉપલબ્ધ ઓનલાઈન સહાય અને માર્ગદર્શન.</p></article>
+        <article class="service-card"><span class="service-icon">🗳️</span><h3>મતદાર કાર્ડ</h3><p>નવું Voter ID, નામ શોધવા અને અરજીની સ્થિતિ અંગે સહાય.</p></article>
+        <article class="service-card"><span class="service-icon">🌾</span><h3>ખેડૂત સેવાઓ</h3><p>ખેડૂત નોંધણી, e-KYC અને લાભાર્થી સ્થિતિ અંગે માર્ગદર્શન.</p></article>
+        <article class="service-card"><span class="service-icon">🏛️</span><h3>સરકારી યોજનાઓ</h3><p>યોજનાઓની ઓનલાઈન અરજી અને જરૂરી દસ્તાવેજો અંગે માહિતી.</p></article>
+        <article class="service-card"><span class="service-icon">💳</span><h3>બેંકિંગ સહાય</h3><p>ઉપલબ્ધ ડિજિટલ નાણાકીય સેવાઓ અંગે પૂછપરછ કરો.</p></article>
+        <article class="service-card"><span class="service-icon">📄</span><h3>ઓનલાઈન ફોર્મ</h3><p>ફોર્મ ભરવા, દસ્તાવેજ અપલોડ અને અરજીની પ્રક્રિયામાં સહાય.</p></article>
+      </div>
+      <p class="note">નોંધ: સેવાઓની ઉપલબ્ધતા અને પાત્રતા સંબંધિત નિયમો મુજબ બદલાઈ શકે છે. ચોક્કસ માહિતી માટે સેન્ટરનો સંપર્ક કરો.</p>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div>
+        <p class="eyebrow">સંપર્ક કરો</p>
+        <h2>મહાકાલ CSC સેન્ટર</h2>
+        <p>📍 નરસિંહપુરા, તા. પાદરા, જી. વડોદરા</p>
+        <p>📞 <a href="tel:9909614382">9909614382</a></p>
+        <p>🕘 દરરોજ: સવારે 9:00 થી સાંજે 7:00</p>
+      </div>
+      <a class="btn btn-light" href="tel:9909614382">ફોન કરો</a>
+    </section>
+
+    <section class="admin-section" aria-labelledby="adminTitle">
+      <details>
+        <summary id="adminTitle">સેન્ટર સ્થિતિ બદલવા માટે એડમિન વિભાગ</summary>
+        <div class="admin-panel">
+          <p class="note">આ નિયંત્રણ આ બ્રાઉઝરમાં જ સ્થિતિ સાચવે છે. દરેક મુલાકાતીને એકસરખી સ્થિતિ બતાવવા માટે સર્વર અથવા Firebase જેવી ડેટાબેઝ સેવા જરૂરી છે.</p>
+          <label for="adminPin">એડમિન PIN</label>
+          <input type="password" id="adminPin" inputmode="numeric" placeholder="PIN દાખલ કરો" autocomplete="current-password">
+          <div class="admin-buttons">
+            <button type="button" class="btn btn-open" id="setOpen">સેન્ટર OPEN કરો</button>
+            <button type="button" class="btn btn-closed" id="setClosed">સેન્ટર CLOSED કરો</button>
+          </div>
+          <p id="adminFeedback" class="admin-feedback" role="status"></p>
+          <small>ડેમો PIN: 1234 — જાહેર વેબસાઇટમાં JavaScript PIN સુરક્ષિત નથી. વાસ્તવિક સુરક્ષા માટે સર્વર આધારિત લૉગિન વાપરો.</small>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <img src="logo.png" alt="" class="footer-logo">
+    <p>© <span id="year"></span> મહાકાલ CSC સેન્ટર. સર્વ હક સુરક્ષિત.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
