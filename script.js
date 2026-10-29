@@ -19,28 +19,25 @@ function speakText(text){if('speechSynthesis'in window){speechSynthesis.cancel()
 document.querySelectorAll('[data-theme]').forEach(b=>b.addEventListener('click',()=>{const colors={blue:['#1769d2','#09a6dc'],red:['#c62828','#ef5350'],green:['#16834a','#50b879'],purple:['#6a35b8','#a16de0'],orange:['#d66b12','#f5a623'],sky:['#087fba','#39c5d8'],pink:['#c02677','#f472b6'],gray:['#374151','#6b7280']};document.documentElement.style.setProperty('--primary',colors[b.dataset.theme][0]);document.documentElement.style.setProperty('--primary2',colors[b.dataset.theme][1]);}));document.getElementById('darkToggle').addEventListener('click',()=>document.body.classList.toggle('dark'));document.getElementById('shareBtn').addEventListener('click',async()=>{try{if(navigator.share)await navigator.share({title:document.title,url:location.href});else{await navigator.clipboard.writeText(location.href);alert('વેબસાઇટની લિંક કોપી થઈ ગઈ છે.')}}catch(e){}});document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const n=document.getElementById('customerName').value,m=document.getElementById('message').value;window.open('https://wa.me/919909614382?text='+encodeURIComponent('નામ: '+n+'\nમેસેજ: '+m),'_blank')});document.getElementById('serviceGrid').innerHTML=services.map(s=>`<div class="service">✨ ${s}</div>`).join('');render();
 
 
-/* Office status: manual opening hours 09:00-19:00, Monday-Saturday */
+/* Welcome popup confetti */
 (function(){
-  const el = document.getElementById('officeStatus');
-  if (!el) return;
-  const now = new Date();
-  const day = now.getDay();
-  const minutes = now.getHours() * 60 + now.getMinutes();
-  const isOpen = day !== 0 && minutes >= 540 && minutes < 1140;
-  el.textContent = isOpen ? '🟢 અત્યારે Office ચાલુ છે' : '🚪 અત્યારે Office બંધ છે';
-  el.style.background = isOpen ? '#18a957' : '#f13f45';
-  const settings = document.getElementById('settingsButton');
-  if (settings) settings.addEventListener('click', function(){
-    const themes = document.querySelector('.themes');
-    if (themes) {
-      themes.style.display = themes.style.display === 'flex' ? 'none' : 'flex';
-      themes.style.flexWrap = 'wrap';
-      themes.style.gap = '6px';
-      themes.style.padding = '8px';
-      themes.style.background = 'rgba(15,20,50,.92)';
-      themes.style.borderRadius = '12px';
-    } else {
-      alert('થીમ બદલવા માટે ઉપરના રંગના બટનોનો ઉપયોગ કરો.');
-    }
+  const overlay = document.getElementById('welcomeOverlay');
+  const confettiBox = document.getElementById('welcomeConfetti');
+  const okButton = document.getElementById('welcomeOk');
+  if (!overlay || !confettiBox || !okButton) return;
+  const colors = ['#2D6BFF','#0CA789','#F5A623','#8B5CF6','#E84A5F'];
+  for (let i = 0; i < 90; i++) {
+    const piece = document.createElement('i');
+    piece.style.setProperty('--x', (Math.random() * 100) + '%');
+    piece.style.setProperty('--c', colors[i % colors.length]);
+    piece.style.setProperty('--d', (3.5 + Math.random() * 5) + 's');
+    piece.style.setProperty('--delay', (-Math.random() * 8) + 's');
+    piece.style.setProperty('--r', (Math.random() * 360) + 'deg');
+    confettiBox.appendChild(piece);
+  }
+  function closeWelcome(){ overlay.hidden = true; }
+  okButton.addEventListener('click', closeWelcome);
+  document.addEventListener('keydown', function(event){
+    if (event.key === 'Escape') closeWelcome();
   });
 })();
