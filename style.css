@@ -15,3 +15,19 @@
 @keyframes welcome-confetti-fall{to{transform:translateY(650px) rotate(720deg)}}
 @media(max-width:480px){.welcome-card{padding:38px 20px 28px;border-radius:24px}.welcome-card p{font-size:19px}}
 @media(prefers-reduced-motion:reduce){.confetti i{animation:none;top:10%}.welcome-overlay{transition:none}}
+
+/* Original portrait, displayed without filters or image edits. */
+.hero{position:relative;isolation:isolate;overflow:hidden;text-align:left;min-height:540px;padding:48px max(5%,calc((100% - 1200px)/2));background:#101d32;}
+.hero::before{content:"";position:absolute;z-index:-1;inset:0 0 0 42%;background:url("owner-photo.jpeg") center top/cover no-repeat;}
+.hero::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,#101d32 0%,#101d32 36%,transparent 58%);pointer-events:none;}
+.hero-content{position:relative;width:40%;max-width:480px;}
+.hero h1{font-size:clamp(26px,3vw,40px);line-height:1.5;}
+.hero .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px;}
+.hero .stats div{min-width:0;padding:12px;text-align:center;}
+@media(max-width:700px){
+.hero{padding:calc(66.4vw + 24px) 20px 30px;min-height:0;text-align:center;}
+.hero::before{inset:0 0 auto;width:100%;height:66.4vw;background-size:cover;background-position:center top;}
+.hero::after{display:none;}
+.hero-content{width:100%;max-width:520px;margin:auto;}
+.hero .stats{margin-top:22px;}
+}
